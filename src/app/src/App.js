@@ -38,41 +38,41 @@ export function App() {
 
   return (
     <div className="App">
-      <div>
+      <section>
         <h1>List of TODOs</h1>
-        <li>Learn Docker</li>
-        <li>Learn React</li>
-        <br>
+          <ul className="no-bullets">
+          <li>Learn Docker</li>
+          <li>Learn React</li>
+        </ul>
+
+
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
+          <ul className="no-bullets">
             {todos.length === 0 && <li>No todos</li>}
             {todos.map((todo) => (
-              <li key={todo._id}>
-                {todo.title}
-              </li>
+              <li key={todo._id}>{todo.title}</li>
             ))}
           </ul>
         )}
-      </div>
-      <div style={{ marginTop: 20 }}>
+      </section>
+
+      <section style={{ marginTop: 20 }}>
         <h1>Create a ToDo</h1>
         <form onSubmit={handleAdd}>
-          <div>
-            <label htmlFor="todo">ToDo: </label>
-            <input
-              id="todo"
-              type="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-          </div>
-          <div style={{ marginTop: "5px" }}>
-            <button type="submit">Add ToDo!</button>
-          </div>
+          <label htmlFor="todo">ToDo: </label>
+          <input
+            id="todo"
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <button type="submit" style={{ marginLeft: "10px" }}>
+            Add ToDo!
+          </button>
         </form>
-      </div>
+      </section>
     </div>
   );
 }
